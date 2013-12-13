@@ -22,6 +22,11 @@
 		D7775F43185B13A9001F4319 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7775F22185B13A9001F4319 /* UIKit.framework */; };
 		D7775F4B185B13A9001F4319 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D7775F49185B13A9001F4319 /* InfoPlist.strings */; };
 		D7775F4D185B13A9001F4319 /* PisanoPeriodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D7775F4C185B13A9001F4319 /* PisanoPeriodTests.m */; };
+		D7775F59185B1469001F4319 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D7775F58185B1469001F4319 /* Utils.m */; };
+		D7775F65185B36D3001F4319 /* JKBigInteger.m in Sources */ = {isa = PBXBuildFile; fileRef = D7775F5F185B36D3001F4319 /* JKBigInteger.m */; };
+		D7775F66185B36D3001F4319 /* tommath.c in Sources */ = {isa = PBXBuildFile; fileRef = D7775F61185B36D3001F4319 /* tommath.c */; };
+		D7775F69185B3F7D001F4319 /* FibonacciSerieTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D7775F68185B3F7D001F4319 /* FibonacciSerieTableViewController.m */; };
+		D7775F6B185B81EB001F4319 /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = D7775F6A185B81EB001F4319 /* LICENSE */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +60,17 @@
 		D7775F48185B13A9001F4319 /* PisanoPeriodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PisanoPeriodTests-Info.plist"; sourceTree = "<group>"; };
 		D7775F4A185B13A9001F4319 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D7775F4C185B13A9001F4319 /* PisanoPeriodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PisanoPeriodTests.m; sourceTree = "<group>"; };
+		D7775F57185B1469001F4319 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Utils.h; path = Utils/Utils.h; sourceTree = "<group>"; };
+		D7775F58185B1469001F4319 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Utils.m; path = Utils/Utils.m; sourceTree = "<group>"; };
+		D7775F5E185B36D3001F4319 /* JKBigInteger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JKBigInteger.h; sourceTree = "<group>"; };
+		D7775F5F185B36D3001F4319 /* JKBigInteger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JKBigInteger.m; sourceTree = "<group>"; };
+		D7775F61185B36D3001F4319 /* tommath.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = tommath.c; sourceTree = "<group>"; };
+		D7775F62185B36D3001F4319 /* tommath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tommath.h; sourceTree = "<group>"; };
+		D7775F63185B36D3001F4319 /* tommath_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tommath_class.h; sourceTree = "<group>"; };
+		D7775F64185B36D3001F4319 /* tommath_superclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = tommath_superclass.h; sourceTree = "<group>"; };
+		D7775F67185B3F7D001F4319 /* FibonacciSerieTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FibonacciSerieTableViewController.h; sourceTree = "<group>"; };
+		D7775F68185B3F7D001F4319 /* FibonacciSerieTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FibonacciSerieTableViewController.m; sourceTree = "<group>"; };
+		D7775F6A185B81EB001F4319 /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +136,10 @@
 				D7775F33185B13A9001F4319 /* Main_iPad.storyboard */,
 				D7775F36185B13A9001F4319 /* InitialViewController.h */,
 				D7775F37185B13A9001F4319 /* InitialViewController.m */,
+				D7775F67185B3F7D001F4319 /* FibonacciSerieTableViewController.h */,
+				D7775F68185B3F7D001F4319 /* FibonacciSerieTableViewController.m */,
+				D7775F56185B1447001F4319 /* Utils */,
+				D7775F5C185B350D001F4319 /* Third Part */,
 				D7775F39185B13A9001F4319 /* Images.xcassets */,
 				D7775F25185B13A9001F4319 /* Supporting Files */,
 			);
@@ -153,6 +173,45 @@
 				D7775F49185B13A9001F4319 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D7775F56185B1447001F4319 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				D7775F57185B1469001F4319 /* Utils.h */,
+				D7775F58185B1469001F4319 /* Utils.m */,
+			);
+			name = Utils;
+			sourceTree = "<group>";
+		};
+		D7775F5C185B350D001F4319 /* Third Part */ = {
+			isa = PBXGroup;
+			children = (
+				D7775F5D185B36D3001F4319 /* JKBigInteger */,
+			);
+			name = "Third Part";
+			sourceTree = "<group>";
+		};
+		D7775F5D185B36D3001F4319 /* JKBigInteger */ = {
+			isa = PBXGroup;
+			children = (
+				D7775F5E185B36D3001F4319 /* JKBigInteger.h */,
+				D7775F5F185B36D3001F4319 /* JKBigInteger.m */,
+				D7775F6A185B81EB001F4319 /* LICENSE */,
+				D7775F60185B36D3001F4319 /* LibTomMath */,
+			);
+			path = JKBigInteger;
+			sourceTree = "<group>";
+		};
+		D7775F60185B36D3001F4319 /* LibTomMath */ = {
+			isa = PBXGroup;
+			children = (
+				D7775F61185B36D3001F4319 /* tommath.c */,
+				D7775F62185B36D3001F4319 /* tommath.h */,
+				D7775F63185B36D3001F4319 /* tommath_class.h */,
+				D7775F64185B36D3001F4319 /* tommath_superclass.h */,
+			);
+			path = LibTomMath;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -236,6 +295,7 @@
 				D7775F3A185B13A9001F4319 /* Images.xcassets in Resources */,
 				D7775F32185B13A9001F4319 /* Main_iPhone.storyboard in Resources */,
 				D7775F29185B13A9001F4319 /* InfoPlist.strings in Resources */,
+				D7775F6B185B81EB001F4319 /* LICENSE in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +316,11 @@
 			files = (
 				D7775F38185B13A9001F4319 /* InitialViewController.m in Sources */,
 				D7775F2B185B13A9001F4319 /* main.m in Sources */,
+				D7775F66185B36D3001F4319 /* tommath.c in Sources */,
 				D7775F2F185B13A9001F4319 /* InitialAppDelegate.m in Sources */,
+				D7775F65185B36D3001F4319 /* JKBigInteger.m in Sources */,
+				D7775F69185B3F7D001F4319 /* FibonacciSerieTableViewController.m in Sources */,
+				D7775F59185B1469001F4319 /* Utils.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
