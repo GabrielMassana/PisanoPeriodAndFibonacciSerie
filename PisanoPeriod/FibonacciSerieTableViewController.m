@@ -8,12 +8,19 @@
 
 #import "FibonacciSerieTableViewController.h"
 #import "Utils.h"
+#import "ActivityViewCustomProvider.h"
 
 @interface FibonacciSerieTableViewController ()
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UITableViewCell *tableViewCell;
 
+@property (nonatomic, strong) UIButton *shareButton;
+@property (nonatomic, strong) UILabel *titleLabel;
+
+@property (nonatomic, strong) UIButton *backButton;
+
+@property (nonatomic, strong) UIPopoverController *pickerPopover;
 
 @end
 
@@ -27,6 +34,56 @@
     [super viewDidLoad];
     [self.view setBackgroundColor:[UIColor colorWithRed:235.0f/255.0f green:235.0f/255.0f blue:235.0f/255.0f alpha:1.0f]];
     
+    self.backButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.backButton setFrame:CGRectMake(0,30,50,30)];
+    [self.backButton setBackgroundColor:[UIColor clearColor]];
+    [self.backButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.backButton setTitle:@"<" forState:UIControlStateNormal];
+    [self.backButton.titleLabel setFont:[UIFont fontWithName:@"EuphemiaUCAS" size:25]];
+    [self.backButton addTarget:self action:@selector(backButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.backButton];
+    
+    
+    self.titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(40, 35, SCREEN_WIDTH-80, 30)];
+    [self.titleLabel setBackgroundColor:[UIColor clearColor]];
+    [self.titleLabel setTextAlignment:NSTextAlignmentCenter];
+    [self.titleLabel setTextColor:[UIColor colorWithRed:0.0f/255.0f green:128.0f/255.0f blue:255.0f/255.0f alpha:1.0f]];
+    [self.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue-CondensedBold" size:25]];
+    [self.titleLabel setAdjustsFontSizeToFitWidth:YES];
+    [self.titleLabel setMinimumScaleFactor:0.1];
+    [self.view addSubview:self.titleLabel];
+    
+    self.shareButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.shareButton setFrame:CGRectMake(SCREEN_WIDTH-40, 35, 30, 30)];
+    [self.shareButton setBackgroundImage:[UIImage imageNamed:@"share_button"] forState:UIControlStateNormal];
+    [self.shareButton addTarget:self action:@selector(shareButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+
+    [self.view addSubview:self.shareButton];
+    
+    if (self.type == 0)
+    {
+        [self.titleLabel setText:@"Fibonacci Serie"];
+        [self.backButton setFrame:CGRectMake(0,35,50,30)];
+
+    }
+    else if (self.type == 1)
+    {
+        if (self.zeros == 1)
+        {
+            [self.titleLabel setText:[NSString stringWithFormat:@"F(mod %d)\nperiod: %d", self.mod, [self.fibonacciNumbersArray count]]];
+
+        }
+        else
+        {
+            [self.titleLabel setText:[NSString stringWithFormat:@"F(mod %d)\nperiod: %d", self.mod, [self.fibonacciNumbersArray count]]];
+
+        }
+        
+        [self.titleLabel setNumberOfLines:0];
+        [self.titleLabel setFrame:CGRectMake(40, 25, SCREEN_WIDTH-80, 40)];
+    }
+    
+    
     self.tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 70, SCREEN_WIDTH, SCREEN_HEIGHT-70) style:UITableViewStylePlain];
     [self.tableView setDataSource:self];
     [self.tableView setDelegate:self];
@@ -35,8 +92,13 @@
     self.tableViewCell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"Cell"];
     
-    NSLog(@"COUNT = %d", [self.fibonacciNumbersArray count]);
+    DLog(@"COUNT = %d", [self.fibonacciNumbersArray count]);
     
+}
+
+-(NSUInteger)supportedInterfaceOrientations
+{
+    return (UIInterfaceOrientationMaskPortrait | UIInterfaceOrientationMaskPortraitUpsideDown);
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,7 +124,16 @@
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    [cell.textLabel setText:[NSString stringWithFormat:@"%@", [self.fibonacciNumbersArray objectAtIndex:indexPath.row]]];
+    if (self.type == 0)
+    {
+        [cell.textLabel setText:[NSString stringWithFormat:@"F(%d): %@",indexPath.row, [self.fibonacciNumbersArray objectAtIndex:indexPath.row]]];
+    }
+    else if (self.type == 1)
+    {
+        [cell.textLabel setText:[NSString stringWithFormat:@"%@",[self.fibonacciNumbersArray objectAtIndex:indexPath.row]]];
+
+    }
+    
     [cell.textLabel setMinimumScaleFactor:0.1f];
     [cell.textLabel setAdjustsFontSizeToFitWidth:YES];
     
@@ -76,55 +147,38 @@
 }
 
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
+#pragma mark Sharing
 
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+- (void) shareButtonClicked
 {
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+    ActivityViewCustomProvider *customProvider = [[ActivityViewCustomProvider alloc]init];
+    [customProvider setArrayData:self.fibonacciNumbersArray];
+    [customProvider setStringTitle:self.titleLabel.text];
+    [customProvider setType:self.type];
+    
+    NSArray *activityItems = [[NSArray alloc]initWithObjects:customProvider, @"",  nil];
+    
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc]initWithActivityItems:activityItems applicationActivities:nil];
 
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a story board-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    activityVC.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypePostToWeibo, UIActivityTypePostToTwitter];
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+    {
+        [self presentViewController:activityVC animated:TRUE completion:nil];
+    }
+    else
+    {
+        self.pickerPopover = [[UIPopoverController alloc]initWithContentViewController:activityVC];
+        [self.pickerPopover presentPopoverFromRect:CGRectMake(743, 40, 0, 0) inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    }
 }
 
- */
+#pragma mark buttons
+
+- (void) backButtonClicked: (id) sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 
 @end

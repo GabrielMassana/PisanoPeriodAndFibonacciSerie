@@ -11,5 +11,9 @@
 @interface FibonacciSerieTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *fibonacciNumbersArray;
+@property (nonatomic) int type;
+@property (nonatomic) int mod;
+@property (nonatomic) int period;
+@property (nonatomic) int zeros;
 
 @end

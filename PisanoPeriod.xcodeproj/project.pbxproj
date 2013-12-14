@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A9552DF185CA65200E41654 /* ActivityViewCustomProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9552DD185CA65200E41654 /* ActivityViewCustomProvider.m */; };
 		D7775F1F185B13A9001F4319 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7775F1E185B13A9001F4319 /* Foundation.framework */; };
 		D7775F21185B13A9001F4319 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7775F20185B13A9001F4319 /* CoreGraphics.framework */; };
 		D7775F23185B13A9001F4319 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7775F22185B13A9001F4319 /* UIKit.framework */; };
@@ -40,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A9552DC185CA65200E41654 /* ActivityViewCustomProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActivityViewCustomProvider.h; sourceTree = "<group>"; };
+		7A9552DD185CA65200E41654 /* ActivityViewCustomProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActivityViewCustomProvider.m; sourceTree = "<group>"; };
 		D7775F1B185B13A9001F4319 /* PisanoPeriod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PisanoPeriod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7775F1E185B13A9001F4319 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D7775F20185B13A9001F4319 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -97,6 +100,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A9552D9185CA65200E41654 /* Sharing */ = {
+			isa = PBXGroup;
+			children = (
+				7A9552DC185CA65200E41654 /* ActivityViewCustomProvider.h */,
+				7A9552DD185CA65200E41654 /* ActivityViewCustomProvider.m */,
+			);
+			path = Sharing;
+			sourceTree = "<group>";
+		};
 		D7775F12185B13A8001F4319 = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +190,7 @@
 		D7775F56185B1447001F4319 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				7A9552D9185CA65200E41654 /* Sharing */,
 				D7775F57185B1469001F4319 /* Utils.h */,
 				D7775F58185B1469001F4319 /* Utils.m */,
 			);
@@ -262,6 +275,9 @@
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Gabriel Massana";
 				TargetAttributes = {
+					D7775F1A185B13A9001F4319 = {
+						DevelopmentTeam = VQJK888J5D;
+					};
 					D7775F3E185B13A9001F4319 = {
 						TestTargetID = D7775F1A185B13A9001F4319;
 					};
@@ -315,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7775F38185B13A9001F4319 /* InitialViewController.m in Sources */,
+				7A9552DF185CA65200E41654 /* ActivityViewCustomProvider.m in Sources */,
 				D7775F2B185B13A9001F4319 /* main.m in Sources */,
 				D7775F66185B36D3001F4319 /* tommath.c in Sources */,
 				D7775F2F185B13A9001F4319 /* InitialAppDelegate.m in Sources */,
@@ -457,10 +474,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jose Antonio Gabriel Massana (X3A9998GNV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jose Antonio Gabriel Massana (X3A9998GNV)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PisanoPeriod/PisanoPeriod-Prefix.pch";
 				INFOPLIST_FILE = "PisanoPeriod/PisanoPeriod-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "99044C3D-1492-448A-B096-9B171AE7C64A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -470,10 +490,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Jose Antonio Gabriel Massana (X3A9998GNV)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Jose Antonio Gabriel Massana (X3A9998GNV)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PisanoPeriod/PisanoPeriod-Prefix.pch";
 				INFOPLIST_FILE = "PisanoPeriod/PisanoPeriod-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "99044C3D-1492-448A-B096-9B171AE7C64A";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -539,6 +562,7 @@
 				D7775F52185B13A9001F4319 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D7775F53185B13A9001F4319 /* Build configuration list for PBXNativeTarget "PisanoPeriodTests" */ = {
 			isa = XCConfigurationList;
@@ -547,6 +571,7 @@
 				D7775F55185B13A9001F4319 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
